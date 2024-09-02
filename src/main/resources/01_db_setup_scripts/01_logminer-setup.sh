@@ -80,6 +80,10 @@ sqlplus sys/top_secret@//localhost:1521/ORCLPDB1 as sysdba <<- EOF
   GRANT CREATE SEQUENCE to debezium;
   ALTER USER debezium QUOTA 100M on users;
   
+  
+EOF
+
+sqlplus Debezium/dbz@localhost:1521/orclpdb1 <<- EOF
   CREATE TABLE contracts (
     id NUMBER PRIMARY KEY,
     contract_num NUMBER(6),
