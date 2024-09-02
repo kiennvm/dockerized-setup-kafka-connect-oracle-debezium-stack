@@ -19,6 +19,7 @@ EOF
 # Enable LogMiner required database features/settings
 sqlplus sys/top_secret@//localhost:1521/ORCLCDB as sysdba <<- EOF
         ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
+        ALTER PROFILE DEFAULT LIMIT FAILED_LOGIN_ATTEMPTS UNLIMITED;
         exit;
 EOF
 
