@@ -25,12 +25,12 @@ EOF
 
 # Create Log Miner Tablespace and User
 sqlplus sys/top_secret@//localhost:1521/ORCLCDB as sysdba <<- EOF
-  CREATE TABLESPACE logminer_tbs DATAFILE '/opt/oracle/oradata/ORCLCDB/logminer_tbs.dbf' SIZE 25M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
+  CREATE TABLESPACE logminer_tbs DATAFILE '/opt/oracle/oradata/ORCLCDB/logminer_tbs.dbf' SIZE 500M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
   exit;
 EOF
 
 sqlplus sys/top_secret@//localhost:1521/ORCLPDB1 as sysdba <<- EOF
-  CREATE TABLESPACE logminer_tbs DATAFILE '/opt/oracle/oradata/ORCLCDB/ORCLPDB1/logminer_tbs.dbf' SIZE 25M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
+  CREATE TABLESPACE logminer_tbs DATAFILE '/opt/oracle/oradata/ORCLCDB/ORCLPDB1/logminer_tbs.dbf' SIZE 500M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
   exit;
 EOF
 
@@ -78,7 +78,7 @@ sqlplus sys/top_secret@//localhost:1521/ORCLPDB1 as sysdba <<- EOF
   GRANT CREATE SESSION TO debezium;
   GRANT CREATE TABLE TO debezium;
   GRANT CREATE SEQUENCE to debezium;
-  ALTER USER debezium QUOTA 100M on users;
+  ALTER USER debezium QUOTA 500M on users;
   
   
 EOF
