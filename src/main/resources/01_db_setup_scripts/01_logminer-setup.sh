@@ -16,13 +16,6 @@ sqlplus /nolog <<- EOF
         exit;
 EOF
 
-# Enable LogMiner required database features/settings
-sqlplus sys/top_secret@//localhost:1521/ORCLCDB as sysdba <<- EOF
-        ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
-        ALTER PROFILE DEFAULT LIMIT FAILED_LOGIN_ATTEMPTS UNLIMITED;
-        exit;
-EOF
-
 # Create Log Miner Tablespace and User
 sqlplus sys/top_secret@//localhost:1521/ORCLCDB as sysdba <<- EOF
   CREATE TABLESPACE logminer_tbs DATAFILE '/opt/oracle/oradata/ORCLCDB/logminer_tbs.dbf' SIZE 500M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
